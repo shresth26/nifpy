@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 import datetime
 import numpy as np
 
+TODAY = datetime.date.today()
+PREV = datetime.timedelta(90)
+
 BASE_URL = 'https://en.wikipedia.org/wiki/NIFTY_50'
 def get_tickers(table_num, row):
     tickers = pd.read_html(BASE_URL)[table_num]
@@ -57,5 +60,39 @@ def get_nifty():
     nifty = [x for x in ticker.Symbol]
     return nifty
 
-res = get_nifty_auto()
-print(res)
+# rek = get_nifty()
+# print(rek)
+
+def get_closing_price(tickers):
+    Closing = pd.DataFrame()
+    for i in range(len(tickers)):
+      try:
+        temp = web.get_data_yahoo(tickers[i], TODAY - PREV)
+        temp.dropna(inplace=True)
+        Closing[tickers[i]] = temp['Close']
+      except:
+        print("No info is available for this particular stock " + tickers[i])
+    return Closing
+
+# res = get_closing(get_nifty_it())
+# print(res)
+
+def get_price(ticker, prev = TODAY - PREV, today = TODAY):
+    temp = web.get_data_yahoo(ticker, start=prev, end=today)
+    return temp
+
+
+def get_live_price(ticker):
+    temp = web.get_data_yahoo(ticker, TODAY - PREV)['Adj Close']
+    print(np.round(temp[-1],2))
+
+def get_summary(symbol):
+    link = pd.read_html('https://finance.yahoo.com/quote/' + symbol + '?p=' + symbol)
+    link1 = pd.concat([link[0], link[1]],ignore_index=True)
+    link1.columns = ['Attribute', 'Value']
+    print(link1)
+
+get_live_price('GRASIM.NS')
+
+
+# get_summary('RELIANCE.NS')
