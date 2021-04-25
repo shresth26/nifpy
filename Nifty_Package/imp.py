@@ -15,7 +15,7 @@ PREV = datetime.timedelta(90)
 BASE_URL = 'https://en.wikipedia.org/wiki/NIFTY_50'
 
 
-def get_tickers(table_num, row):
+def _get_tickers(table_num, row):
 
     """
         get_tickers function is used to get the name of different indexes along with their constituents and

@@ -16,7 +16,33 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'
 }
 
-def calculate_financials(symbol, statement):
+def _calculate_financials(symbol, statement):
+
+    """
+
+        calculate_financials function is used to fetch and preprocess the financial documents
+        from the Yahoo Finance website.
+
+        Parameters
+        --------------------------------
+
+        symbol :    It is used to specify the symbol/ticker for which the 
+                    financials have to be fetched
+
+        statement : The name of the financial statement that has to be fetched.
+                    Categories = [
+                                  'balance-sheet' : Fetches the balance sheet,
+                                  'cash-flow' :     Fetches the cash flow statement,
+                                  'financials' :    Fetches the income statement
+                                 ]
+
+        Returns
+        --------------------------------
+        
+        A dataframe that contains the required financial statement.
+
+    """
+
     headers = []
     temp_list = []
     label_list = []
@@ -42,15 +68,69 @@ def calculate_financials(symbol, statement):
     return df
 
 def get_balance_sheet(symbol):
+
+    """ 
+
+        Used to obtain the balance sheet of the specified ticker
+
+        Parameters
+        --------------------------------
+
+        symbol :    It is used to specify the symbol/ticker for which the 
+                    balance sheet has to be fetched
+
+        Returns
+        --------------------------------
+        
+        A dataframe that contains the balance sheet of the company
+    
+    """
+
     bal_sheet = calculate_financials(symbol, 'balance-sheet')
     return bal_sheet
 
 def get_cash_flow(symbol):
+
+      """ 
+
+        Used to obtain the cash flow statement of the specified ticker
+
+        Parameters
+        --------------------------------
+
+        symbol :    It is used to specify the symbol/ticker for which the 
+                    cash flow has to be fetched
+
+        Returns
+        --------------------------------
+        
+        A dataframe that contains the cash flow statement of the company
+    
+    """
+
     cash_flow = calculate_financials(symbol, 'cash-flow')
     return cash_flow
 
 def get_income_statement(symbol):
+
+      """ 
+
+        Used to obtain the income statement of the specified ticker
+
+        Parameters
+        --------------------------------
+
+        symbol :    It is used to specify the symbol/ticker for which the 
+                    income statement has to be fetched
+
+        Returns
+        --------------------------------
+        
+        A dataframe that contains the income statement of the company
+    
+    """
+
     cash_flow = calculate_financials(symbol, 'financials')
     return cash_flow
 
-get_balance_sheet('RELIANCE.NS')
+
