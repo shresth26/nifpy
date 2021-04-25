@@ -43,14 +43,14 @@ def calculate_financials(symbol, statement):
 
 def get_balance_sheet(symbol):
     bal_sheet = calculate_financials(symbol, 'balance-sheet')
-    print(bal_sheet)
+    return bal_sheet
 
 def get_cash_flow(symbol):
     cash_flow = calculate_financials(symbol, 'cash-flow')
-    print(cash_flow)
+    return cash_flow
 
 def get_income_statement(symbol):
     cash_flow = calculate_financials(symbol, 'financials')
-    print(cash_flow)
+    return cash_flow
 
 get_balance_sheet('RELIANCE.NS')
