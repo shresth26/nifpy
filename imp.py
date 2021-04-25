@@ -83,7 +83,7 @@ def get_price(ticker, prev = TODAY - PREV, today = TODAY):
 
 
 def get_live_price(ticker):
-    temp = web.get_data_yahoo(ticker, TODAY - PREV)['Adj Close']
+    temp = web.get_data_yahoo(ticker, TODAY - PREV)['Close']
     print(np.round(temp[-1],2))
 
 def get_summary(symbol):
