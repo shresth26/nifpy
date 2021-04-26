@@ -52,7 +52,7 @@ def _get_tickers(table_num, row):
     itr2 = itr1.split(',')
     itr2 = [i + ".NS" for i in itr2]
     return itr2
-    
+
 def get_nifty():
     ticker = pd.read_html(BASE_URL)[1]
     nifty = [x for x in ticker.Symbol]
@@ -194,7 +194,6 @@ def get_live_price(ticker):
 
         Parameters
         --------------------------------
-
         ticker : Contains the symbol/ticker for which the live price will be returned
 
     """

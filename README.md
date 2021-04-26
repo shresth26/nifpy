@@ -28,36 +28,35 @@
 - [get_nifty_privatebank](#)
 - [get_nifty_realty](#)
 
-### get_live_price
+### get_live_price()
+
+This function returns the live/latest price for the symbol that has been passed as the parameter
+
 ``` python 
 import nifpy
 price = get_live_price(ticker)
 print(price)
 
 """ 
-
-This function returns the live/latest price for the symbol that has been passed as the parameter
-
 Parameters
 -------------------------------
 ticker : Contains the symbol/ticker for which the live price will be returned
-
 """
 
 #Example
 price = get_live_price('ITC.NS')
 ```
 
-### get_summary
+### get_summary()
+
+This function returns the summary of various attributes of the symbol/ticker that has been passed as the parameter
+
 ``` python 
 import nifpy
 summary = get_summary(symbol)
 print(summary)
 
 """ 
-
-This function returns the summary of various attributes of the symbol/ticker that has been passed as the parameter
-
 Parameters
 -------------------------------
 tickers : Contains the symbol/ticker for which the summary of various attributes will be returned
@@ -90,14 +89,15 @@ summary = get_summary('MARUTI.NS')
 ```
 
 ### get_balance_sheet
+
+Used to obtain the balance sheet of the specified ticker
+
 ``` python 
 from nifpy import financials
 balance_sheet = get_balance_sheet(symbol)
 print(balance_sheet)
 
-""" 
-Used to obtain the balance sheet of the specified ticker
-
+"""
 Parameters
 -------------------------------
 symbol : It is used to specify the symbol/ticker for   which the balance sheet has to be fetched
