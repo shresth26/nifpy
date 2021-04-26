@@ -8,8 +8,10 @@ TODAY = datetime.date.today()
 PREV = datetime.timedelta(90)
 
 """ 
+
     BASE_URL is the url that would be used to obtain different indexes that trade on 
     the Indian stock market. The data is fetched through Wikipedia directly. 
+
 """
 
 BASE_URL = 'https://en.wikipedia.org/wiki/NIFTY_50'
@@ -92,6 +94,7 @@ def get_nifty():
 def get_closing_price(tickers, start = TODAY - PREV, end = TODAY):
 
     """ 
+
         This function returns the Closing price of a list of tickers mentioned in the parameter.
         Functions that are defined above can be directly passed to get the closing price of 
         each ticker in the index
@@ -147,6 +150,7 @@ def get_closing_price(tickers, start = TODAY - PREV, end = TODAY):
 def get_price(ticker, start = TODAY - PREV, end = TODAY):
 
     """ 
+
         This function returns the various attributes of a ticker such as the High, Low, 
         Open, Close, Volume and Adjusted Close 
 
@@ -170,12 +174,14 @@ def get_price(ticker, start = TODAY - PREV, end = TODAY):
         Open, Close, Volume and Adjusted Close 
 
     """
+
     temp = web.get_data_yahoo(ticker, start=start, end=end)
     return temp
 
 def get_live_price(ticker):
 
     """ 
+
         This function returns the live/latest price for the symbol that has been passed as the
         parameter.
 
@@ -185,12 +191,14 @@ def get_live_price(ticker):
         ticker : Contains the symbol/ticker for which the live price will be returned
 
     """
+
     temp = web.get_data_yahoo(ticker, TODAY - PREV)['Close']
     return np.round(temp[-1],2)
 
 def get_summary(symbol):
 
     """ 
+
         This function returns the summary of various attributes of the symbol/ticker that 
         has been passed as the parameter.
 
@@ -222,6 +230,7 @@ def get_summary(symbol):
         - 1 Year Target Estimate
              
     """
+    
     link = pd.read_html('https://finance.yahoo.com/quote/' + symbol + '?p=' + symbol)
     link1 = pd.concat([link[0], link[1]],ignore_index=True)
     link1.columns = ['Attribute', 'Value']
