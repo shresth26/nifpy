@@ -1,11 +1,18 @@
 import pandas as pd
 import pandas_datareader as web
-import matplotlib.pyplot as plt
 import datetime
 import numpy as np
 
 TODAY = datetime.date.today()
 PREV = datetime.timedelta(90)
+
+""" 
+
+    To get the name of symbol/ticker of the stocks for which you want information you can
+    look it up on https://finance.yahoo.com/ and from there you can pass the scrip name
+    in the parameter where required. 
+
+"""
 
 """ 
 

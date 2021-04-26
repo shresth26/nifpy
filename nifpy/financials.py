@@ -6,6 +6,14 @@ import numpy as np
 import pandas as pd
 import bs4
 
+""" 
+
+    To get the name of symbol/ticker of the stocks for which you want information you can
+    look it up on https://finance.yahoo.com/ and from there you can pass the scrip name
+    in the parameter where required. 
+
+"""
+
 headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
     'Accept-Encoding': 'gzip, deflate, br',
