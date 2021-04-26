@@ -52,6 +52,11 @@ def _get_tickers(table_num, row):
     itr2 = itr1.split(',')
     itr2 = [i + ".NS" for i in itr2]
     return itr2
+    
+def get_nifty():
+    ticker = pd.read_html(BASE_URL)[1]
+    nifty = [x for x in ticker.Symbol]
+    return nifty
 
 def get_sensex():
     return get_tickers(-4, 3)
@@ -91,11 +96,6 @@ def get_nifty_privatebank():
 
 def get_nifty_realty():     
     return get_tickers(-4, 15)
-
-def get_nifty():
-    ticker = pd.read_html(BASE_URL)[1]
-    nifty = [x for x in ticker.Symbol]
-    return nifty
 
 
 def get_closing_price(tickers, start = TODAY - PREV, end = TODAY):
@@ -154,7 +154,7 @@ def get_closing_price(tickers, start = TODAY - PREV, end = TODAY):
         print("No info is available for this particular stock " + tickers[i])
     return Closing
 
-def get_price(ticker, start = TODAY - PREV, end = TODAY):
+def get_data(ticker, start = TODAY - PREV, end = TODAY):
 
     """ 
 
