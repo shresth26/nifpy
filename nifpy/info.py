@@ -59,43 +59,43 @@ def get_nifty():
     return nifty
 
 def get_sensex():
-    return get_tickers(-4, 3)
+    return _get_tickers(-4, 3)
 
 def get_nifty_next50():
-    return get_tickers(-4, 4)
+    return _get_tickers(-4, 4)
 
 def get_nifty_bank():
-    return get_tickers(-4, 5)
+    return _get_tickers(-4, 5)
 
 def get_nifty_auto():
-    return get_tickers(-4, 6)
+    return _get_tickers(-4, 6)
 
 def get_nifty_financial():
-    return get_tickers(-4, 7)
+    return _get_tickers(-4, 7)
 
 def get_nifty_fmcg():
-    return get_tickers(-4, 8)
+    return _get_tickers(-4, 8)
 
 def get_nifty_it():
-    return get_tickers(-4, 9)
+    return _get_tickers(-4, 9)
 
 def get_nifty_media():
-    return get_tickers(-4, 10)
+    return _get_tickers(-4, 10)
 
 def get_nifty_metal():
-    return get_tickers(-4, 11)
+    return _get_tickers(-4, 11)
 
 def get_nifty_pharma():
-    return get_tickers(-4, 12)
+    return _get_tickers(-4, 12)
 
 def get_nifty_psubank():
-    return get_tickers(-4,13)
+    return _get_tickers(-4,13)
 
 def get_nifty_privatebank():
-    return get_tickers(-4, 14)
+    return _get_tickers(-4, 14)
 
 def get_nifty_realty():     
-    return get_tickers(-4, 15)
+    return _get_tickers(-4, 15)
 
 
 def get_closing_price(tickers, start = TODAY - PREV, end = TODAY):
@@ -115,7 +115,7 @@ def get_closing_price(tickers, start = TODAY - PREV, end = TODAY):
                   Format: 'dd/mm/yyyy' as in '25/04/2021' 
                   Default: Three months from today's date
 
-        end :     Contains the end date from which closing price is required
+        end :     Contains the end date till which closing price is required
                   Format: 'dd/mm/yyyy' as in '27/04/2021' 
                   Default: Today's date
 
@@ -241,4 +241,3 @@ def get_summary(symbol):
     link1 = pd.concat([link[0], link[1]],ignore_index=True)
     link1.columns = ['Attribute', 'Value']
     return link1
-

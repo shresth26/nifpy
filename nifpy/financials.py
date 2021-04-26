@@ -94,12 +94,12 @@ def get_balance_sheet(symbol):
     
     """
 
-    bal_sheet = calculate_financials(symbol, 'balance-sheet')
+    bal_sheet = _calculate_financials(symbol, 'balance-sheet')
     return bal_sheet
 
 def get_cash_flow(symbol):
 
-      """ 
+    """ 
 
         Used to obtain the cash flow statement of the specified ticker
 
@@ -116,12 +116,12 @@ def get_cash_flow(symbol):
     
     """
 
-    cash_flow = calculate_financials(symbol, 'cash-flow')
+    cash_flow = _calculate_financials(symbol, 'cash-flow')
     return cash_flow
 
 def get_income_statement(symbol):
 
-      """ 
+    """ 
 
         Used to obtain the income statement of the specified ticker
 
@@ -138,7 +138,6 @@ def get_income_statement(symbol):
     
     """
 
-    cash_flow = calculate_financials(symbol, 'financials')
-    return cash_flow
-
+    inc_statement = _calculate_financials(symbol, 'financials')
+    return inc_statement
 
