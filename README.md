@@ -16,7 +16,7 @@
 This function returns the live/latest price for the symbol that has been passed as the parameter
 
 ``` python 
-import nifpy
+from nifpy import *
 price = get_live_price(ticker)
 print(price)
 
@@ -34,7 +34,7 @@ price = get_live_price('ITC.NS')
 This function returns the summary of various attributes of the symbol/ticker that has been passed as the parameter
 
 ``` python 
-import nifpy
+from nifpy import *
 summary = get_summary(symbol)
 print(summary)
 
@@ -74,7 +74,7 @@ This function returns the various attributes of a ticker such as the High, Low, 
 and Adjusted Close
 
 ``` python 
-import nifpy
+from nifpy import *
 data = get_data(ticker, start=TODAY-PREV, end=TODAY)
 print(data)
 
@@ -107,7 +107,7 @@ data = get_data('WIPRO.NS','27/01/2020','27/04/2021')
 This function returns the Closing price of a list of tickers mentioned in the parameter.
 
 ``` python 
-import nifpy
+from nifpy import *
 closing = get_closing_price(tickers, start=TODAY-PREV, end = TODAY)
 print(closing)
 
@@ -156,7 +156,7 @@ stonks = ['TCS.NS', 'TITAN.NS', 'TATASTEEL.NS','ICICIBANK.NS']
 closing = get_closing_price(stonks,'27/01/2021','26/02/2021')
 
 # Or you can directly pass indexes mentioned above
-closing = get_closing_price(get_nifty_bank(),'27/01/2021','27/02/2021')
+closing = get_closing_price(get_nifty_bank(),'27/01/2021','26/02/2021')
 
 ```
 
@@ -165,7 +165,7 @@ closing = get_closing_price(get_nifty_bank(),'27/01/2021','27/02/2021')
 Used to obtain the balance sheet of the specified ticker
 
 ``` python 
-from nifpy import financials
+from nifpy import *
 balance_sheet = get_balance_sheet(symbol)
 print(balance_sheet)
 
@@ -184,10 +184,10 @@ balance_sheet = get_balance_sheet('RELIANCE.NS')
 
 ### get_cash_flow
 
-Used to obtain the cash flow statement of the specified ticker
+Used to obtain the cash flow ](#)statement of the specified ticker
 
 ``` python 
-from nifpy import financials
+from nifpy import *
 cash_flow = get_cash_flow(symbol)
 print(cash_flow)
 
@@ -206,7 +206,7 @@ cash_flow = get_cash_flow('HCLTECH.NS')
 
 ### get_income_statement
 ``` python 
-from nifpy import financials
+from nifpy import *
 inc_statement = get_income_statement(symbol)
 print(inc_statement)
 
@@ -226,19 +226,29 @@ A dataframe that contains the income statement of the company
 inc_statement = get_income_statement('TITAN.NS')
 ```
 
-## Indexes
+### Indices
 
-- [get_nifty](#)
-- [get_sensex](#)
-- [get_nifty_next50](#)
-- [get_nifty_bank](#)
-- [get_nifty_auto](#)
-- [get_nifty_financial](#)
-- [get_nifty_fmcg](#)
-- [get_nifty_it](#)
-- [get_nifty_media](#)
-- [get_nifty_metal](#)
-- [get_nifty_pharma](#)
-- [get_nifty_psubank](#)
-- [get_nifty_privatebank](#)
-- [get_nifty_realty](#)
+- get_nifty
+- get_sensex
+- get_nifty_next50
+- get_nifty_bank
+- get_nifty_auto
+- get_nifty_financial
+- get_nifty_fmcg
+- get_nifty_it
+- get_nifty_media
+- get_nifty_metal
+- get_nifty_pharma
+- get_nifty_psubank
+- get_nifty_privatebank
+- get_nifty_realty
+
+``` python
+import nifpy
+it_stonks = get_nifty_it()
+print(it_stonks)
+```
+
+![](docs/nifpy1.png)
+ 
+In a similar way stocks trading in other indices are returned as a list and can be used for further analysis.

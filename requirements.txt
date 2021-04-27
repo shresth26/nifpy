@@ -1,0 +1,6 @@
+pandas==0.25.2
+pandas_datareader==0.8.1
+lxml==4.2.1
+numpy==1.13.3
+requests==2.18.4
+beautifulsoup4==4.9.3

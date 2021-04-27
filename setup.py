@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='nifpy',
-    version = '0.1',
+    version = '0.0.1',
     author = 'Shresth Singh',
     author_email = 'singhshresth26@gmail.com',
     description = 
