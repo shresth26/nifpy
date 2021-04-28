@@ -1,7 +1,23 @@
-# Nifty_API
+# nifpy
 
+## Getting Started
 
-## Methods
+### Installation
+
+You can install the package from Pypi
+```bash
+pip3 install nifpy
+```
+
+### Dependencies
+
+You can install the dependencies by executing the following code in your terminal
+
+```bash
+pip3 install -r requirements.txt
+```
+
+### Methods
 
 - [get_live_price](#get_live_price)
 - [get_summary](#get_summary)
@@ -228,23 +244,23 @@ inc_statement = get_income_statement('TITAN.NS')
 
 ### Indices
 
-- get_nifty
-- get_sensex
-- get_nifty_next50
-- get_nifty_bank
-- get_nifty_auto
-- get_nifty_financial
-- get_nifty_fmcg
-- get_nifty_it
-- get_nifty_media
-- get_nifty_metal
-- get_nifty_pharma
-- get_nifty_psubank
-- get_nifty_privatebank
-- get_nifty_realty
+- get_nifty()
+- get_sensex()
+- get_nifty_next50()
+- get_nifty_bank()
+- get_nifty_auto()
+- get_nifty_financial()
+- get_nifty_fmcg()
+- get_nifty_it()
+- get_nifty_media()
+- get_nifty_metal()
+- get_nifty_pharma()
+- get_nifty_psubank()
+- get_nifty_privatebank()
+- get_nifty_realty()
 
 ``` python
-import nifpy
+from nifpy import *
 it_stonks = get_nifty_it()
 print(it_stonks)
 ```
