@@ -6,18 +6,19 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='nifpy',
-    version = '0.0.1',
+    version = '0.0.3',
     author = 'Shresth Singh',
     author_email = 'singhshresth26@gmail.com',
     description = 
                   """
-                        Fetch several attributes such as closing price, live price, stock summary, 
+                        Easy to use python package that can be used to fetch live price, closing price, stock summary, 
                         index list and fundamentals such as income statement, cash flow statement
-                        and balance sheet.
+                        and balance sheet for stocks that trade on the National Stock Exchange(NSE).
                   """,
     long_description=long_description,
     long_description_content_type='text/markdown',
+    url = 'https://github.com/shresth26/nifpy',
     license = 'MIT',
     packages = ['nifpy'],
-    keywords = ['stocks', 'nifty', 'financials','algo trading'],
+    keywords = ['stocks', 'nifty', 'financials','algo trading','nse'],
 zip_safe = False)

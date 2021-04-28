@@ -1,5 +1,7 @@
 # nifpy
 
+nifpy is an easy to use python package that can be used to fetch **live price**, **closing price**, **stock summary**, **index list** and fundamentals such as **income statement**, **cash flow statement** and **balance sheet** of stocks that trade on the National Stock Exchange(NSE).
+
 ## Getting Started
 
 ### Installation
@@ -200,7 +202,7 @@ balance_sheet = get_balance_sheet('RELIANCE.NS')
 
 ### get_cash_flow
 
-Used to obtain the cash flow ](#)statement of the specified ticker
+Used to obtain the cash flow statement of the specified ticker
 
 ``` python 
 from nifpy import *
@@ -221,13 +223,12 @@ cash_flow = get_cash_flow('HCLTECH.NS')
 ```
 
 ### get_income_statement
+Used to obtain the income statement of the specified ticker
+
 ``` python 
 from nifpy import *
 inc_statement = get_income_statement(symbol)
 print(inc_statement)
-
-
-Used to obtain the income statement of the specified ticker
 
 """ 
 Parameters
