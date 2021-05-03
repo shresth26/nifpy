@@ -19,6 +19,12 @@ You can install the dependencies by executing the following code in your termina
 pip3 install -r requirements.txt
 ```
 
+### How to get the scrip name
+
+You can get the scrip/symbol/ticker of the stock you want by opening the yahoo finance website and searching for the company as shown below. 
+
+![](docs/scrip.gif)
+
 ### Methods
 
 - [get_live_price](#get_live_price)
