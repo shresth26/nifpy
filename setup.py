@@ -6,7 +6,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='nifpy',
-    version = '0.0.3',
+    version = '0.1.1',
     author = 'Shresth Singh',
     author_email = 'singhshresth26@gmail.com',
     description = 
@@ -14,11 +14,12 @@ setup(
                         Easy to use python package that can be used to fetch live price, closing price, stock summary, 
                         index list and fundamentals such as income statement, cash flow statement
                         and balance sheet for stocks that trade on the National Stock Exchange(NSE).
+                        Package has been updated and now supports crypto currency.
                   """,
     long_description=long_description,
     long_description_content_type='text/markdown',
     url = 'https://github.com/shresth26/nifpy',
     license = 'MIT',
     packages = ['nifpy'],
-    keywords = ['stocks', 'nifty', 'financials','algo trading','nse'],
+    keywords = ['stocks', 'nifty', 'financials','algo trading','nse','crypto','cryptocurrency'],
 zip_safe = False)
