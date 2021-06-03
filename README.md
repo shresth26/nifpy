@@ -184,6 +184,31 @@ closing = get_closing_price(get_nifty_bank(),'27/01/2021','26/02/2021')
 
 ```
 
+### get_crypto_data
+
+This function returns the various attributes of a crypto ticker such as the High, Low, 
+Open, Close, Volume and Adjusted Close.
+This is limited to the previous 100 days historical data for the coin
+
+```python
+from nifpy import *
+crypto_data = get_crypto_data(symbol)
+print(crypto_data)
+
+"""
+Parameters
+-------------------------------
+symbol : Contains the symbol/ticker for which various attributes will be returned
+
+Returns
+-------------------------------
+A pandas dataframe that contains attributes of a crypto coin such as the High,Low, Open, Close, Volume and Adjusted Close 
+
+"""
+#Example
+crypto_coin = get_crypto_data('DOGE-USD')
+```
+
 ### get_balance_sheet
 
 Used to obtain the balance sheet of the specified ticker
