@@ -1,4 +1,3 @@
-import streamlit as st
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -9,7 +8,6 @@ import plotly.figure_factory as ff
 import datetime
 from urllib.parse import urlencode
 from pandas_datareader import data as pdr
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
 TODAY = datetime.date.today()
 PREV = datetime.timedelta(600)
@@ -25,7 +23,9 @@ def moving_avg(scrip, num_days):
         rangeslider_visible=True)
     fig.show()
 
-#moving_avg('ITC.NS',50)
+"""UPDATE FOR THE NEXT VERSION
+    ADD timestamps such as 1m, 2m, 6m, ytd in Bollinger bands
+"""
 
 def bollinger_bands(scrip):
     company = pdr.get_data_yahoo(scrip, start = TODAY-PREV, end = TODAY)
@@ -44,19 +44,6 @@ def bollinger_bands(scrip):
                              name = "Closing Price",line = dict(color='rgb(27, 158, 119)', width = 1.2)))#'#19D3F3'
     fig.show()
 
-#bollinger_bands('ITC.NS')
-
-# def get_chart(scrip, kind = 'line'):
-#     company = pdr.get_data_yahoo(scrip, start = TODAY-PREV, end = TODAY)
-#     if kind == 'line':
-#         fig = px.line(company, y = 'Close', x = company.index)
-#         fig.show()
-#     elif kind == 'area':
-#         fig = px.area(company, y = 'Close', x = company.index)
-#         fig.show()
-
-#get_chart('HAPPSTMNDS.NS','area')
-
 def get_chart(scrip, kind = 'line',start = TODAY-PREV, end = TODAY):
     company = pdr.get_data_yahoo(scrip, start = start, end = end)
     if kind == 'line':
@@ -68,4 +55,3 @@ def get_chart(scrip, kind = 'line',start = TODAY-PREV, end = TODAY):
         fig.update_xaxes(rangeslider_visible=True)
         fig.show()
 
-get_chart('ITC.NS','line')
