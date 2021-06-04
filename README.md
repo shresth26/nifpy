@@ -31,6 +31,7 @@ You can get the scrip/symbol/ticker of the stock you want by opening the yahoo f
 - [get_summary](#get_summary)
 - [get_data](#get_data)
 - [get_closing_price](#get_closing_price)
+- [get_crypto_data](#get_crypto_data)
 - [get_balance_sheet](#get_balance_sheet)
 - [get_cash_flow](#get_cash_flow)
 - [get_income_statement](#get_income_statement)
