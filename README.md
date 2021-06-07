@@ -25,7 +25,7 @@ You can get the scrip/symbol/ticker of the stock you want by opening the yahoo f
 
 ![](docs/scrip.gif)
 
-### Methods
+## Methods
 
 - [get_live_price](#get_live_price)
 - [get_summary](#get_summary)
@@ -35,6 +35,13 @@ You can get the scrip/symbol/ticker of the stock you want by opening the yahoo f
 - [get_balance_sheet](#get_balance_sheet)
 - [get_cash_flow](#get_cash_flow)
 - [get_income_statement](#get_income_statement)
+
+
+## Chart Center
+
+- [moving_avg](#moving_avg) 
+- [bollinger_bands](#bollinger_bands) 
+- [get_chart](#get_chart) 
 
 ### get_live_price
 
@@ -301,3 +308,92 @@ print(it_stonks)
 ![](docs/nifpy1.png)
  
 In a similar way stocks trading in other indices are returned as a list and can be used for further analysis.
+
+
+### moving_avg
+Used to plot the moving average of the specified ticker
+
+``` python 
+from nifpy import *
+moving_avg(scrip, num_days)
+
+""" 
+Parameters
+-------------------------------
+scrip : It is used to specify the symbol/ticker for which the moving average has to be plotted
+num_days : Number of days for which moving average has to be plotted. Commonly used values
+            are 14, 20, 50, 100, 200 
+
+Returns
+--------------------------------
+Plot consisting of moving average along with the closing price
+"""
+#Example
+
+#Moving average for 20 days
+moving_avg('ITC.NS', 20)
+
+#Moving average for 50 days
+moving_avg('ITC.NS', 50)
+
+```
+
+### bollinger_bands
+Used to plot Bollinger Bands of the specified ticker
+
+``` python 
+from nifpy import *
+bollinger_bands(scrip)
+
+""" 
+Parameters
+-------------------------------
+scrip : Used to specify the symbol/ticker for which Bollinger Bands has to be plotted 
+
+Returns
+--------------------------------
+Plot consisting of Bollinger Bands for the past 600 days
+"""
+#Example
+bollinger_bands('DIVISLAB.NS')
+
+```
+
+### get_chart
+Used to get the historical chart of the specified ticker
+
+``` python 
+from nifpy import *
+get_chart(scrip, kind = 'line',start = TODAY-PREV, end = TODAY)
+
+# TODAY = datetime.date.today()
+# PREV = datetime.timedelta(600)
+
+""" 
+Parameters
+-------------------------------
+scrip : Used to specify the symbol/ticker for which historical chart has to be plotted
+
+kind : The type of chart - 'line' or 'area'
+
+start :   Contains the starting date
+          Format: 'dd/mm/yyyy' as in '25/04/2020' 
+          Default: 600 days from today's date
+
+end :     Contains the end date
+          Format: 'dd/mm/yyyy' as in '27/05/2021' 
+          Default: Today's date
+
+Returns
+--------------------------------
+Historical chart based on time frame
+"""
+#Example
+
+#For area chart with default timeframe of 600 days
+get_chart('SBIN.NS','area')
+
+#For line chart with custom timeframe
+get_chart('SBIN.NS','line','25/04/2020','27/05/2021')
+
+```

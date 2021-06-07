@@ -14,6 +14,19 @@ PREV = datetime.timedelta(600)
 
 
 def moving_avg(scrip, num_days):
+
+    """ 
+        Parameters
+        -------------------------------
+        scrip : Used to specify the symbol/ticker for which the moving average has to be plotted
+        num_days : Number of days for which moving average has to be plotted. Commonly used values
+                    are 14, 20, 50, 100, 200 
+        
+        Returns
+        --------------------------------
+        Plot consisting of moving average along with the closing price
+    """
+
     company = pdr.get_data_yahoo(scrip, start = TODAY-PREV, end = TODAY)
     company['MA-' + str(num_days)] = company['Close'].rolling(num_days).mean()
     fig = go.Figure()
@@ -28,6 +41,16 @@ def moving_avg(scrip, num_days):
 """
 
 def bollinger_bands(scrip):
+    """ 
+        Parameters
+        -------------------------------
+        scrip : Used to specify the symbol/ticker for which Bollinger Bands has to be plotted 
+        
+        Returns
+        --------------------------------
+        Plot consisting of Bollinger Bands for ticker
+    """
+
     company = pdr.get_data_yahoo(scrip, start = TODAY-PREV, end = TODAY)
     company['20 day Close MA'] = company['Close'].rolling(20).mean()
     company['Upper'] = company['20 day Close MA'] + (2 * company['Close'].rolling(20).std())
@@ -45,13 +68,33 @@ def bollinger_bands(scrip):
     fig.show()
 
 def get_chart(scrip, kind = 'line',start = TODAY-PREV, end = TODAY):
+
+    """ 
+        Parameters
+        -------------------------------
+        scrip : Used to specify the symbol/ticker for which historical chart has to be plotted
+
+        kind : The type of chart - 'line' or 'area'
+        
+        start :   Contains the starting date
+                  Format: 'dd/mm/yyyy' as in '25/04/2020' 
+                  Default: 600 days from today's date
+
+        end :     Contains the end date
+                  Format: 'dd/mm/yyyy' as in '27/05/2021' 
+                  Default: Today's date
+
+        Returns
+        --------------------------------
+        Historical chart based on time frame
+    """
+
     company = pdr.get_data_yahoo(scrip, start = start, end = end)
-    if kind == 'line':
+    if kind.lower() == 'line':
         fig = px.line(company, y = 'Close', x = company.index,range_x=[start,end])
         fig.update_xaxes(rangeslider_visible=True)
         fig.show()
-    elif kind == 'area':
+    elif kind.lower() == 'area':
         fig = px.area(company, y = 'Close', x = company.index,range_x=[start,end])
         fig.update_xaxes(rangeslider_visible=True)
         fig.show()
-
