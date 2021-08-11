@@ -21,5 +21,5 @@ setup(
     url = 'https://github.com/shresth26/nifpy',
     license = 'MIT',
     packages = ['nifpy'],
-    keywords = ['stocks', 'nifty', 'financials','algo trading','nse','crypto','cryptocurrency'],
+    keywords = ['stocks', 'nifty', 'financials','algo trading','nse','crypto','cryptocurrency','sensex'],
 zip_safe = False)

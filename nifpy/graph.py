@@ -36,9 +36,6 @@ def moving_avg(scrip, num_days):
         rangeslider_visible=True)
     fig.show()
 
-"""UPDATE FOR THE NEXT VERSION
-    ADD timestamps such as 1m, 2m, 6m, ytd in Bollinger bands
-"""
 
 def bollinger_bands(scrip):
     """ 
@@ -98,3 +95,13 @@ def get_chart(scrip, kind = 'line',start = TODAY-PREV, end = TODAY):
         fig = px.area(company, y = 'Close', x = company.index,range_x=[start,end])
         fig.update_xaxes(rangeslider_visible=True)
         fig.show()
+
+
+# TO-DO
+"""
+Incorporate weighted and exponential moving average for the moving average function
+"""
+
+"""UPDATE FOR THE NEXT VERSION
+    ADD timestamps such as 1m, 2m, 6m, ytd in Bollinger bands
+"""

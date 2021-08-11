@@ -1,6 +1,8 @@
+plotly==4.6.0
+matplotlib==2.1.1
 pandas==0.25.2
-pandas_datareader==0.8.1
+requests==2.18.4
+pandas_datareader==0.10.0
 lxml==4.2.1
 numpy==1.13.3
-requests==2.18.4
 beautifulsoup4==4.9.3
