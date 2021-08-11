@@ -6,7 +6,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='nifpy',
-    version = '0.1.4',
+    version = '0.1.5',
     author = 'Shresth Singh',
     author_email = 'singhshresth26@gmail.com',
     description = 
