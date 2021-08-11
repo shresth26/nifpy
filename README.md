@@ -359,6 +359,8 @@ bollinger_bands('DIVISLAB.NS')
 
 ```
 
+![](docs/Bollinger_image.png)
+
 ### get_chart
 Used to get the historical chart of the specified ticker
 
@@ -397,3 +399,5 @@ get_chart('SBIN.NS','area')
 get_chart('SBIN.NS','line','25/04/2020','27/05/2021')
 
 ```
+
+![](docs/Line_chart.png)
