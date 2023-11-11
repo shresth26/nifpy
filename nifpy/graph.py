@@ -7,7 +7,7 @@ import plotly.graph_objs as go
 import plotly.figure_factory as ff
 import datetime
 from urllib.parse import urlencode
-from pandas_datareader import data as pdr
+import yfinance as web
 
 TODAY = datetime.date.today()
 PREV = datetime.timedelta(600)
@@ -27,7 +27,7 @@ def moving_avg(scrip, num_days):
         Plot consisting of moving average along with the closing price
     """
 
-    company = pdr.get_data_yahoo(scrip, start = TODAY-PREV, end = TODAY)
+    company = web.download(scrip, start = TODAY-PREV, end = TODAY)
     company['MA-' + str(num_days)] = company['Close'].rolling(num_days).mean()
     fig = go.Figure()
     fig.add_trace(go.Scatter(x = company.index, y = company['MA-' + str(num_days)], name = str(num_days) + "Day MA",line = dict(color='orange', width = 1.2)))
@@ -48,7 +48,7 @@ def bollinger_bands(scrip):
         Plot consisting of Bollinger Bands for ticker
     """
 
-    company = pdr.get_data_yahoo(scrip, start = TODAY-PREV, end = TODAY)
+    company = web.download(scrip, start = TODAY-PREV, end = TODAY)
     company['20 day Close MA'] = company['Close'].rolling(20).mean()
     company['Upper'] = company['20 day Close MA'] + (2 * company['Close'].rolling(20).std())
     company['Lower'] = company['20 day Close MA'] - (2 * company['Close'].rolling(20).std())
@@ -86,7 +86,7 @@ def get_chart(scrip, kind = 'line',start = TODAY-PREV, end = TODAY):
         Historical chart based on time frame
     """
 
-    company = pdr.get_data_yahoo(scrip, start = start, end = end)
+    company = web.download(scrip, start = start, end = end)
     if kind.lower() == 'line':
         fig = px.line(company, y = 'Close', x = company.index,range_x=[start,end])
         fig.update_xaxes(rangeslider_visible=True)

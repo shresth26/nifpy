@@ -58,17 +58,17 @@ def _calculate_financials(symbol, statement):
     index = 0
     url = 'https://finance.yahoo.com/quote/' + symbol + '/' + statement + '?p=' + symbol
     page = requests.get(url, headers)
-    soup = bs4.BeautifulSoup(page.content,'html.parser')
-    features = soup.findAll('div', class_ = 'D(tbr)')
+    soup = bs4.BeautifulSoup(page.content, 'html.parser')
+    features = soup.findAll('div', class_='D(tbr)')
     for item in features[0].find_all('div', class_='D(ib)'):
         headers.append(item.text)
     while index <= len(features) - 1:
-      temp = features[index].findAll('div', class_='D(tbc)')
-      for line in temp:
-        temp_list.append(line.text)
-      final.append(temp_list)
-      temp_list = []
-      index+=1
+        temp = features[index].findAll('div', class_='D(tbc)')
+        for line in temp:
+            temp_list.append(line.text)
+        final.append(temp_list)
+        temp_list = []
+        index += 1
 
     df = pd.DataFrame(final[1:])
     df.columns = headers

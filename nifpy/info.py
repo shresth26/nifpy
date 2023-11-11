@@ -1,5 +1,5 @@
 import pandas as pd
-import pandas_datareader as web
+import yfinance as web
 import datetime
 import numpy as np
 
@@ -147,7 +147,7 @@ def get_closing_price(tickers, start = TODAY - PREV, end = TODAY):
     Closing = pd.DataFrame()
     for i in range(len(tickers)):
       try:
-        temp = web.get_data_yahoo(tickers[i], start = start, end = end)
+        temp = web.download(tickers[i], start = start, end = end)
         temp.dropna(inplace=True)
         Closing[tickers[i]] = temp['Close']
       except:
@@ -182,7 +182,7 @@ def get_data(ticker, start = TODAY - PREV, end = TODAY):
 
     """
 
-    temp = web.get_data_yahoo(ticker, start=start, end=end)
+    temp = web.download(ticker, start=start, end=end)
     return temp
 
 def get_live_price(ticker):
@@ -198,7 +198,7 @@ def get_live_price(ticker):
 
     """
 
-    temp = web.get_data_yahoo(ticker, TODAY - PREV)['Close']
+    temp = web.download(ticker, TODAY - PREV)['Close']
     return np.round(temp[-1],2)
 
 def get_summary(symbol):
