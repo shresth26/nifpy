@@ -7,7 +7,7 @@ import numpy as np
 TODAY = datetime.date.today()
 PREV = datetime.timedelta(90)
 
-
+#modify this in new feature
 # def get_nifty():
 #     ticker = pd.read_html(constants.BASE_URL)[2]
 #     print(ticker)
