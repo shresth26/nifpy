@@ -1,7 +1,7 @@
 from .constants import *
 import pandas as pd
 import yfinance as web
-]import numpy as np
+import numpy as np
 
 
 class stockPrice:
