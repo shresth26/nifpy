@@ -1,14 +1,18 @@
 from .constants import *
 import pandas as pd
 import yfinance as web
-import datetime
-import numpy as np
+]import numpy as np
 
 
 class stockPrice:
 
     @staticmethod
     def get_nifty() -> pd.DataFrame:
+
+        """
+            This function returns the list of all the Nifty tickers.
+        """
+
         nifty = pd.read_html(BASE_URL)[2]
         return nifty
 
