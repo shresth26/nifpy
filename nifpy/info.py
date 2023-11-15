@@ -6,6 +6,7 @@ import numpy as np
 
 class stockPrice:
 
+    #todo append .NS in the end of tickers if they don't exist already
     @staticmethod
     def get_nifty() -> pd.DataFrame:
 
@@ -17,7 +18,7 @@ class stockPrice:
         return nifty
 
     @staticmethod
-    def get_closing_price(tickers, start=TODAY - PREV, end=TODAY) -> pd.DataFrame:
+    def get_closing_data(tickers, start=TODAY - PREV, end=TODAY) -> pd.DataFrame:
 
         """
 
@@ -59,7 +60,7 @@ class stockPrice:
         return Closing
 
     @staticmethod
-    def get_data(ticker, start=TODAY - PREV, end=TODAY) -> pd.DataFrame:
+    def get_stock_data(ticker, start=TODAY - PREV, end=TODAY) -> pd.DataFrame:
 
         """
 
@@ -91,7 +92,7 @@ class stockPrice:
         return temp
 
     @staticmethod
-    def get_live_price(ticker) -> float:
+    def live_price(ticker) -> float:
 
         """
 
@@ -108,7 +109,7 @@ class stockPrice:
         return np.round(temp[-1], 2)
 
     @staticmethod
-    def get_summary(symbol) -> pd.DataFrame:
+    def stock_summary(symbol) -> pd.DataFrame:
 
         """
 
@@ -148,33 +149,3 @@ class stockPrice:
         link1 = pd.concat([link[0], link[1]], ignore_index=True)
         link1.columns = ['Attribute', 'Value']
         return link1
-
-    @staticmethod
-    def get_crypto_data(symbol) -> pd.DataFrame:
-
-        """
-
-            This function returns the various attributes of a crypto ticker such as the High, Low,
-            Open, Close, Volume and Adjusted Close.
-            This is limited to the previous 100 days historical data for the coin
-
-            Parameters
-            --------------------------------
-
-            symbol : Contains the symbol/ticker for which various attributes will be returned
-            Example: crypto = get_crypto_data('BTC-USD)
-
-            Returns
-            --------------------------------
-
-            A pandas dataframe that contains various attributes of a crypto coin such as the High, Low,
-            Open, Close, Volume and Adjusted Close
-
-        """
-
-        table1 = pd.read_html(
-            'https://finance.yahoo.com/quote/' + symbol + '/history?period1=1410912000&period2=1622678400&interval=1d&filter=history&frequency=1d&includeAdjustedClose=true')
-        crypto_data = table1[0][:-1]
-        crypto_data['Date'] = pd.to_datetime(crypto_data['Date'])
-        crypto_data = crypto_data.set_index('Date')
-        return crypto_data
