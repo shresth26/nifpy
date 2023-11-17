@@ -1,10 +1,8 @@
-from .constants import *
 import pandas as pd
 import yfinance as web
 import numpy as np
+from .constants import *
 
-
-# todo append .NS in the end of tickers if they don't exist already
 
 def get_closing_data(tickers, start=TODAY - PREV, end=TODAY) -> pd.DataFrame:
     """
@@ -36,6 +34,7 @@ def get_closing_data(tickers, start=TODAY - PREV, end=TODAY) -> pd.DataFrame:
 
     """
 
+    tickers = [ticker + '.NS' for ticker in tickers]
     Closing = pd.DataFrame()
     for i in range(len(tickers)):
         try:
@@ -74,6 +73,8 @@ def get_stock_data(ticker, start=TODAY - PREV, end=TODAY) -> pd.DataFrame:
 
     """
 
+    if '.NS' not in ticker:
+        ticker = ticker + '.NS'
     temp = web.download(ticker, start=start, end=end)
     return temp
 
@@ -90,11 +91,13 @@ def live_price(ticker) -> float:
 
     """
 
+    if '.NS' not in ticker:
+        ticker = ticker + '.NS'
     temp = web.download(ticker, TODAY - PREV)['Close']
     return np.round(temp[-1], 2)
 
 
-def stock_summary(symbol) -> pd.DataFrame:
+def stock_summary(ticker) -> pd.DataFrame:
     """
 
         This function returns the summary of various attributes of the symbol/ticker that
@@ -103,7 +106,7 @@ def stock_summary(symbol) -> pd.DataFrame:
         Parameters
         --------------------------------
 
-        symbol : Contains the symbol/ticker for which the summary of various attributes
+        ticker : Contains the symbol/ticker for which the summary of various attributes
                   will be returned
 
         Returns
@@ -129,7 +132,7 @@ def stock_summary(symbol) -> pd.DataFrame:
 
     """
 
-    link = pd.read_html('https://finance.yahoo.com/quote/' + symbol + '?p=' + symbol)
+    link = pd.read_html('https://finance.yahoo.com/quote/' + ticker + '?p=' + ticker)
     link1 = pd.concat([link[0], link[1]], ignore_index=True)
     link1.columns = ['Attribute', 'Value']
     return link1
