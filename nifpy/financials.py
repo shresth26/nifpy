@@ -5,7 +5,6 @@ import requests
 import numpy as np
 import pandas as pd
 import bs4
-
 """ 
 
     To get the name of symbol/ticker of the stocks for which you want information you can
