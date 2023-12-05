@@ -51,4 +51,4 @@ class indices:
         bank_list = list(bank[bank.columns[2]])
         return bank_list[1:]
 
-# todo create a module for technical charts that will contain rsi, money flow index, macd etc
+# todo create a module for technical charts that will contain rsi, money flow index, MACD etc
